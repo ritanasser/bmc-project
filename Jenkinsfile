@@ -1,7 +1,6 @@
 // Jenkins env var reference https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#working-with-your-jenkinsfile
 
 pipeline {
-    agent { label 'ec2-fleet' }
 
     stages {
         stage('Build Simple WebServer') {
