@@ -36,6 +36,7 @@ pipeline {
             when { changeset "infra/**" }
             input {
                 message "Do you want to proceed for infrastructure provisioning?"
+
             }
             steps {
                 // copyArtifacts filter: 'infra/dev/terraform.tfstate', projectName: '${JOB_NAME}'
