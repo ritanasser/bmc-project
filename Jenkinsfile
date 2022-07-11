@@ -9,39 +9,8 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh '''
-                ec2-metadata
-                cd simple_webserver
-                # docker build
+                docker build -t hello-world
                 '''
-            }
-        }
-        stage('Test') {
-            when { changeRequest() }
-            steps {
-                echo 'Testing..'
-                sh 'python4 -m unittest simple_webserver/tests/test_flask_web.py'
-            }
-        }
-        stage('Deploy - dev') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-        stage('Deploy - prod') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-        stage('Provision') {
-            when { changeset "infra/**" }
-            input {
-                message "Do you want to proceed for infrastructure provisioning?"
-
-            }
-            steps {
-                // copyArtifacts filter: 'infra/dev/terraform.tfstate', projectName: '${JOB_NAME}'
-                echo 'Provisioning....'
-                // archiveArtifacts artifacts: 'infra/dev/terraform.tfstate', onlyIfSuccessful: true
             }
         }
 
