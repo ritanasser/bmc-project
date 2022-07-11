@@ -10,4 +10,5 @@ pipeline {
                 docker build -t hello-world .
                 '''
             }
+
         }}}
