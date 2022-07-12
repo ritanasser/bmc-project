@@ -10,9 +10,6 @@ pipeline {
                 sh '''
                 echo 'hi'
 
-
-
-
                 '''
             }
 
