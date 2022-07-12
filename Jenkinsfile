@@ -14,6 +14,7 @@ pipeline {
                 ansible --version
                 python3 -m pip show ansible
 
+
                 '''
             }
         }
