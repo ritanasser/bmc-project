@@ -11,8 +11,6 @@ pipeline {
 
                 sh '''
 
-
-
                 echo 'hi'
                 '''
             }
