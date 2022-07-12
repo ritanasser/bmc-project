@@ -13,10 +13,15 @@ pipeline {
                 python3 -m pip install --upgrade --user ansible
                 ansible --version
                 python3 -m pip show ansible
+                helm repo add jenkins https://charts.jenkins.io
+                helm repo update
+                helm upgrade --install myjenkins jenkins/jenkins
+
 
 
                 '''
             }
+
         }
 
     }
