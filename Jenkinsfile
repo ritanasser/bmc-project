@@ -6,8 +6,13 @@ pipeline {
     stages {
         stage("install ansible") {
             when { anyOf { branch "master"; branch "dev" }}
+
             steps {
+
                 sh '''
+
+
+
                 echo 'hi'
                 '''
             }
