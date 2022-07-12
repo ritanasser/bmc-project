@@ -15,6 +15,7 @@ pipeline {
                 python3 -m pip show ansible
 
                 '''
+
             }
         }
 
