@@ -10,7 +10,7 @@ pipeline {
             steps {
 
                 sh '''
-                echo 'hi'
+                echo 'hiii'
 
                 '''
             }
