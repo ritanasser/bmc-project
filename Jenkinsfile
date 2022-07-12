@@ -13,6 +13,7 @@ pipeline {
                 python3 -m pip install --upgrade --user ansible
                 ansible --version
                 python3 -m pip show ansible
+
                 '''
             }
         }
