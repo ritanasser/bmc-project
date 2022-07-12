@@ -8,7 +8,6 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
             steps {
                 sh '''
-
                 echo 'hi'
 
                 '''
