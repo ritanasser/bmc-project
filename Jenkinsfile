@@ -4,12 +4,16 @@ pipeline {
     agent { label '' }
 
     stages {
-        stage('Build Simple WebServer') {
+        stage("install ansible") {
             when { anyOf { branch "master"; branch "dev" }}
             steps {
-                echo 'Building..'
                 sh '''
-                docker build -t hello-world
+                python3 -m pip -V
+                python3 -m pip install --user ansible
+                python3 -m pip install --upgrade --user ansible
+                ansible --version
+                python3 -m pip show ansible
+
                 '''
             }
         }
