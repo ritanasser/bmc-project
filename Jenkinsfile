@@ -11,7 +11,6 @@ pipeline {
 
                 sh '''
                 python3 -m pip -V
-                pip install -r requirements.txt
                 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
                 python3 get-pip.py --user
                 python3 -m pip install --user ansible
