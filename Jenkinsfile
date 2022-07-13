@@ -15,8 +15,7 @@ pipeline {
                 python3 -m pip install --upgrade --user ansible
                 '''
                              sh'''
-                sudo apt-get update
-                sudo apt-get install docker.io
+
                 docker ––version
                 sudo systemctl enable docker
                 sudo systemctl status docker
