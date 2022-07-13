@@ -14,17 +14,15 @@ pipeline {
                 python3 -m pip install --user ansible
                 python3 -m pip install --upgrade --user ansible
                 '''
-                             sh'''
+                sh'''
+                curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+                echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+                sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+                kubectl version --client
 
-                sudo systemctl enable docker
-                sudo systemctl status docker
-                sudo systemctl start docker
-                curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-                sudo apt-get install curl
-                sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-                sudo apt-get install kubeadm kubelet kubectl
-                sudo apt-mark hold kubeadm kubelet kubectl
-                kubeadm version
+
+
                 '''
             }
 
