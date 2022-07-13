@@ -16,7 +16,6 @@ pipeline {
                 '''
                              sh'''
 
-                docker ––version
                 sudo systemctl enable docker
                 sudo systemctl status docker
                 sudo systemctl start docker
