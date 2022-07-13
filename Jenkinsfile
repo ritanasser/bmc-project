@@ -26,8 +26,10 @@ pipeline {
             when { changeRequest() }
             steps {
                 echo 'Testing..'
-                sh ' ansible --version
-                python3 -m pip show ansible'
+                sh '''
+                ansible --version
+                python3 -m pip show ansible
+                '''
             }
         }
 
