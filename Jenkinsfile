@@ -47,6 +47,14 @@ pipeline {
         when{ branch(dev)}
         steps{
         sh'''
+        minikube start
+        kubectl get po -A
+        minikube kubectl -- get po -A
+        minikube dashboard
+
+
+
+
         kubectl apply -f Jobs/job1.yaml
         sleep 10 #let postgrase to be up and running
         kubectl apply -f Jobs/job1-create-table.yaml
