@@ -43,6 +43,22 @@ pipeline {
 
             }
         }
+        stage ('job1'){
+        when{ branch(dev)}
+        steps{
+        sh'''
+        kubectl apply -f Jobs/job1.yaml
+        sleep 10 #let postgrase to be up and running
+        kubectl apply -f Jobs/job1-create-table.yaml
+        cd Jobs
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
+        docker build -t bmc .
+        docker tag bmc:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
+        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
+
+
+        '''
+        }
 
 
     }

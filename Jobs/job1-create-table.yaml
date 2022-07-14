@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-table-postgrse
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: postgres:14.1-alpine
+        command: ["psql -c 'CREATE DATABASE bmc-project;' postgres://postgres:postgres@postgres-service:5432/ && psql -c 'CREATE TABLE users (name VARCHAR(100));CREATE TABLE mails (email VARCHAR(100))' postgres://postgres:postgres@postgres-service:5432/bmc-project  "]
+      restartPolicy: Never
+  backoffLimit: 1
