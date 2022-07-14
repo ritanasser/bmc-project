@@ -7,6 +7,6 @@ spec:
     spec:
       containers:
       - name: pi
-        image: <you image name> erc image url
+        image: 723653791098.dkr.ecr.us-east-1.amazonaws.com
       restartPolicy: Never
   backoffLimit: 1

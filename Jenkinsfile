@@ -51,18 +51,39 @@ pipeline {
         kubectl get po -A
         minikube kubectl -- get po -A
         minikube dashboard
-
-
-
-
         kubectl apply -f Jobs/job1.yaml
         sleep 10 #let postgrase to be up and running
         kubectl apply -f Jobs/job1-create-table.yaml
-
-
         '''
+
         }
 
 
     }
+     stage ('job2'){
+        when{ branch(dev)}
+        steps{
+        sh'''
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
+        docker build -t bmc .
+        docker tag bmc:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
+        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
+        kubectl apply -f Jobs/job2.yaml
+
+        '''
+        }}
+          stage ('job3'){
+        when{ branch(dev)}
+        steps{
+        sh'''
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
+        docker build -t bmc-job3 .
+        docker tag bmc-job3:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-job3:latest
+        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-job3:latest
+        kubectl apply -f Jobs/job3.yaml
+
+        '''
+
+        }}
+
 }}
