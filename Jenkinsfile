@@ -44,7 +44,7 @@ pipeline {
             }
         }
             stage('k8s'){
-        when { branch(dev)}
+            when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
         minikube start
@@ -55,7 +55,7 @@ pipeline {
         }}
 
         stage ('job1'){
-        when{ branch(dev)}
+            when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
 
@@ -71,7 +71,7 @@ pipeline {
 
 
      stage ('job2'){
-        when{ branch(dev)}
+            when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
@@ -83,7 +83,7 @@ pipeline {
         '''
         }}
           stage ('job3'){
-        when{ branch(dev)}
+            when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
