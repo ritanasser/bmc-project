@@ -43,14 +43,22 @@ pipeline {
 
             }
         }
-        stage ('job1'){
-        when{ branch(dev)}
+            stage('k8s'){
+        when { branch(dev)}
         steps{
         sh'''
         minikube start
         kubectl get po -A
         minikube kubectl -- get po -A
         minikube dashboard
+        '''
+        }}
+
+        stage ('job1'){
+        when{ branch(dev)}
+        steps{
+        sh'''
+
         kubectl apply -f Jobs/job1.yaml
         sleep 10 #let postgrase to be up and running
         kubectl apply -f Jobs/job1-create-table.yaml
@@ -60,6 +68,8 @@ pipeline {
 
 
     }
+
+
      stage ('job2'){
         when{ branch(dev)}
         steps{
