@@ -48,7 +48,7 @@ pipeline {
         steps{
         sh'''
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        minikube start
+        minikube start --driver=docker
         kubectl get po -A
         minikube kubectl -- get po -A
         minikube dashboard
