@@ -48,7 +48,7 @@ pipeline {
         steps{
         sh'''
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        systemctl docker status
+        systemctl docker start
         minikube start
         kubectl get po -A
         minikube kubectl -- get po -A
