@@ -58,7 +58,8 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube
         kubectl apply -f Jobs/job1.yaml
         sleep 10 #let postgrase to be up and running
         kubectl apply -f Jobs/job1-create-table.yaml
