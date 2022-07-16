@@ -48,10 +48,9 @@ pipeline {
         steps{
         sh'''
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
-        service docker start
         docker build -t bmc .
-        docker tag bmc:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
-        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
+        docker tag bmc-docker:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-docker:latest
+        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-docker:latest
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         systemctl docker start
         minikube start
