@@ -49,7 +49,6 @@ pipeline {
         sh'''
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
         systemctl status docker
-        systemctl status docker
         docker build -t bmc .
         docker tag bmc:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
         docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
