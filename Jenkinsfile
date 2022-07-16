@@ -47,6 +47,7 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
+        systemctl start docker
         docker build -t d:0.0.1 ./
         docker run d:0.0.1
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
