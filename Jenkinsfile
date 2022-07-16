@@ -52,7 +52,8 @@ pipeline {
         steps{
         sh'''
         IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com        docker build -t ${IMAGE} .
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
+        docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
 
