@@ -50,7 +50,7 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        IMAGE="bmc-docker"
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${DockerURL}
         docker build -t ${IMAGE}
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
