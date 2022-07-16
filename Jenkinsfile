@@ -1,7 +1,9 @@
 // Jenkins env var reference https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#working-with-your-jenkinsfile
 
 pipeline {
-    agent { label '' }
+    agent { any }
+    enviroment{
+    DockerURL ='723653791098.dkr.ecr.us-east-1.amazonaws.com'}
 
     stages {
         stage("Building") {
@@ -47,10 +49,12 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        (Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
-        docker build -t bmc-docker .
-        docker tag bmc-docker:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-docker:latest
-        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-docker:latest
+        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${DockerURL}
+        docker build -t ${IMAGE}
+        docker tag ${IMAGE} ${DockerURL}/${IMAGE}
+        docker push ${DockerURL}/${IMAGE}
+
 
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         systemctl docker start
