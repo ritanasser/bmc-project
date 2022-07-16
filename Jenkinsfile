@@ -47,7 +47,6 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        systemctl start docker
         systemctl enable docker
         systemctl restart docker
         docker build -t d:0.0.1 ./
