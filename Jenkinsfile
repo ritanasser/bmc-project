@@ -1,9 +1,10 @@
 // Jenkins env var reference https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#working-with-your-jenkinsfile
 
 pipeline {
-    agent { any }
-    enviroment{
-    DockerURL ='723653791098.dkr.ecr.us-east-1.amazonaws.com'}
+    agent any
+    environment{
+    DockerURL ='723653791098.dkr.ecr.us-east-1.amazonaws.com'
+    }
 
     stages {
         stage("Building") {
