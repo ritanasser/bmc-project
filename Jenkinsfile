@@ -48,6 +48,8 @@ pipeline {
         steps{
         sh'''
         systemctl start docker
+        systemctl enable docker
+        systemctl restart docker
         docker build -t d:0.0.1 ./
         docker run d:0.0.1
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
