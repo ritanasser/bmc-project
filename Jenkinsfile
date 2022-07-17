@@ -69,6 +69,8 @@ pipeline {
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         minikube delete
         minikube start
+        minikube status
+        kubectl version
         kubectl get po -A
         minikube kubectl -- get po -A
         minikube dashboard
