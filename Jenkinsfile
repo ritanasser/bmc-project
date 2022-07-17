@@ -43,7 +43,6 @@ pipeline {
                 python3 -m pip show ansible
                 kubectl version --client
                 helm version
-
                 '''
 
             }
