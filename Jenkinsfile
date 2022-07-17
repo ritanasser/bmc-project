@@ -58,8 +58,6 @@ pipeline {
         docker push ${DockerURL}/${IMAGE}
 
 
-
-
         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
         systemctl docker start
         minikube start
