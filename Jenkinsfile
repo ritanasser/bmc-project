@@ -87,7 +87,6 @@ pipeline {
         docker tag bmc:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
         docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
         kubectl apply -f Jobs/job2.yaml
-
         '''
         }}
           stage ('job3'){
