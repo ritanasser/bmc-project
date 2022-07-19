@@ -66,14 +66,7 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        minikube delete
-        minikube start
-        minikube status
-        kubectl version
-        kubectl get po -A
-        minikube kubectl -- get po -A
-        minikube dashboard
+
         kubectl apply -f Jobs/job1.yaml
         sleep 10 #let postgrase to be up and running
         kubectl apply -f Jobs/job1-create-table.yaml
