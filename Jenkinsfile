@@ -81,10 +81,11 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 723653791098.dkr.ecr.us-east-1.amazonaws.com
-        docker build -t bmc .
-        docker tag bmc:latest 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
-        docker push 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc:latest
+        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
+        docker build -t ${IMAGE} .
+        docker tag ${IMAGE} ${DockerURL}/${IMAGE}
+        docker push ${DockerURL}/${IMAGE}
         kubectl apply -f Jobs/job2.yaml
 
         '''
