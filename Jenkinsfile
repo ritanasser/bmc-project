@@ -114,6 +114,7 @@ pipeline {
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
         kubectl apply -f Jobs/job4.yaml
+        kubectl delete
 
         '''
 
