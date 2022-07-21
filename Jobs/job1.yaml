@@ -17,11 +17,11 @@ spec:
       containers:
         - name: postgres
           image: postgres:14.1-alpine
-      env:
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD   # better to use secrets instead of hardcoded passwords in git
-          value: postgres
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD   # better to use secrets instead of hardcoded passwords in git
+              value: postgres
 ---
 apiVersion: v1
 kind: Service
