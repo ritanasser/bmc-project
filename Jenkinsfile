@@ -66,7 +66,8 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-
+        mkdir ~/.kube
+        cp /home/ec2-user/.kube/config ~/.kube/config
         kubectl apply -f Jobs/job1.yaml
         sleep 10 #let postgrase to be up and running
         kubectl apply -f Jobs/job1-create-table.yaml
