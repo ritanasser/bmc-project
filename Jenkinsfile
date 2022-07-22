@@ -123,9 +123,12 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        helm init
-        helm repo update
-        helm list
+        wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
+        tar xvf helm-v3.4.1-linux-amd64.tar.gz
+        mv linux-amd64/helm /usr/local/bin
+        rm helm-v3.4.1-linux-amd64.tar.gz
+        rm -rf linux-amd64
+        helm version
 
 
         '''
