@@ -129,7 +129,7 @@ pipeline {
         helm repo add fluent https://fluent.github.io/helm-charts
         helm repo update
         helm show values fluent/fluentd
-        helm status RELEASE_NAME fluent/fluentd
+        helm status fluent/fluentd
 
 
         '''
