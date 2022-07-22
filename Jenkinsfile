@@ -56,9 +56,6 @@ pipeline {
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
-        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        install minikube-linux-amd64 /usr/local/bin/minikube
-
 
 
 
@@ -138,7 +135,7 @@ pipeline {
         helm repo update
         helm show values fluent/fluentd
         kubectl get nodes
-        kubectl delete node minikube
+        kubectl delete node
         helm del fluent
 
 
