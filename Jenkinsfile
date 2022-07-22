@@ -56,6 +56,9 @@ pipeline {
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        install minikube-linux-amd64 /usr/local/bin/minikube
+
 
 
 
@@ -123,6 +126,11 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
+        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
+        docker build -t ${IMAGE} .
+        docker tag ${IMAGE} ${DockerURL}/${IMAGE}
+        docker push ${DockerURL}/${IMAGE}
         wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
         tar xvf helm-v3.4.1-linux-amd64.tar.gz
         helm version
