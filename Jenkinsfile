@@ -131,6 +131,7 @@ pipeline {
         helm show values fluent/fluentd
         kubectl get nodes
         kubectl delete node minikube
+        helm del fluent
 
 
         '''
