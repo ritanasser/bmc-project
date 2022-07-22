@@ -104,7 +104,7 @@ pipeline {
         '''
 
         }}
-                  stage ('job4'){
+          stage ('job4'){
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
@@ -115,6 +115,18 @@ pipeline {
         docker push ${DockerURL}/${IMAGE}
         kubectl apply -f Jobs/job4.yaml
         kubectl delete -f Jobs/job4.yaml
+
+        '''
+
+        }}
+          stage ('helm'){
+            when { anyOf { branch "master"; branch "dev" }}
+        steps{
+        sh'''
+        helm init
+        helm repo update
+        helm list
+
 
         '''
 
