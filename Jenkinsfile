@@ -126,13 +126,11 @@ pipeline {
         wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
         tar xvf helm-v3.4.1-linux-amd64.tar.gz
         helm version
-        kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
-        kubectl proxy
         helm repo add fluent https://fluent.github.io/helm-charts
         helm repo update
         helm show values fluent/fluentd
         helm install fluentd
-        helm status RELEASE_NAME
+        kubectl get nodes
 
 
         '''
