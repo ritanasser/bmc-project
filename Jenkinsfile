@@ -126,6 +126,9 @@ pipeline {
         wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
         tar xvf helm-v3.4.1-linux-amd64.tar.gz
         helm version
+        helm repo add fluent https://fluent.github.io/helm-charts
+        helm repo update
+        helm show values fluent/fluentd
 
 
         '''
