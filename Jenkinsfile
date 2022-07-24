@@ -136,7 +136,7 @@ pipeline {
         helm show values fluent/fluentd
         kubectl get pods
         #kubectl delete pod create-table-postgrse-7jhdr
-        helm uninstall create-table-postgrse-8q5d5
+        #helm uninstall fluent/fluentd
 
 
         '''
