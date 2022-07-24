@@ -130,7 +130,7 @@ pipeline {
         steps{
         sh'''
         cd dockerfile-job5
-         IMAGE="job4:${BRANCH_NAME}_${BUILD_NUMBER}"
+        IMAGE="job5:${BRANCH_NAME}_${BUILD_NUMBER}"
         docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
