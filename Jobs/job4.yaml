@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: print-table-postgrse
+  name: print-tables-postgrse
 spec:
   template:
     spec:
