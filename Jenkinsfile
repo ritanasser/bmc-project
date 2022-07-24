@@ -135,8 +135,8 @@ pipeline {
         helm repo update
         helm show values fluent/fluentd
         kubectl get pods
-        kubectl delete -f Jobs/job3.yaml
-        helm del -f Jobs/job2.yaml
+        kubectl delete pod create-table-postgrse-7jhdr
+        helm del create-table-postgrse-8q5d5
 
 
         '''
