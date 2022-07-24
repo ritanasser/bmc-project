@@ -89,7 +89,7 @@ pipeline {
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
         cd ../
-        kubectl apply -f Jobs/job-2.yaml
+        kubectl apply -f Jobs/job2.yaml
 
         '''
         }}

@@ -7,6 +7,6 @@ spec:
     spec:
       containers:
       - name: pi
-        image: 723653791098.dkr.ecr.us-east-1.amazonaws.com/bmc-docker
+        image: 723653791098.dkr.ecr.us-east-1.amazonaws.com/job2
       restartPolicy: Never
   backoffLimit: 1
