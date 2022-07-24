@@ -135,7 +135,7 @@ pipeline {
         #kubectl delete pod create-table-postgrse-7jhdr
         helm create phoenixnap
         ls phoenixnap
-        helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
+        #helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
         helm list --all-namespaces
         helm uninstall phoenixnap
 
