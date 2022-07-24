@@ -89,7 +89,7 @@ pipeline {
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
         cd ../
-
+        kubectl apply -f Jobs/job2.yaml
         '''
         }}
           stage ('job3'){
@@ -118,6 +118,7 @@ pipeline {
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
+        cd ../
         kubectl apply -f Jobs/job4.yaml
         kubectl delete -f Jobs/job4.yaml
 
