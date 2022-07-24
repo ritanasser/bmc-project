@@ -135,7 +135,7 @@ pipeline {
         helm repo update
         helm show values fluent/fluentd
         kubectl get nodes
-        #kubectl delete node
+        kubectl delete pod fluent
         helm del fluent
 
 
