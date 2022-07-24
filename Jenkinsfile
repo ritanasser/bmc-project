@@ -138,10 +138,10 @@ pipeline {
         tar xvf helm-v3.4.1-linux-amd64.tar.gz
         helm version
         kubectl get pods
-        #kubectl delete pod create-table-postgrse-7jhdr
+        #kubectl delete pod create-table-postgrse-8q5d5
         helm create phoenixnap
         ls phoenixnap
-        #helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
+        helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
         helm list --all-namespaces
         helm uninstall phoenix-chart
 
