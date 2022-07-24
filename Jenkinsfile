@@ -136,8 +136,9 @@ pipeline {
         helm show values fluent/fluentd
         kubectl get pods
         #kubectl delete pod create-table-postgrse-7jhdr
+        helm create phoenixnap
         helm list --all-namespaces
-        #helm uninstall fluent/fluentd
+        helm uninstall phoenixnap
 
 
         '''
