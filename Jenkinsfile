@@ -136,7 +136,7 @@ pipeline {
         helm show values fluent/fluentd
         kubectl get pods
         #kubectl delete pod create-table-postgrse-7jhdr
-        helm uninstall RELEASE_NAME postgres-deployment-6fc78fb45d-nshgk
+        helm uninstall postgres-deployment-6fc78fb45d-nshgk
 
 
         '''
