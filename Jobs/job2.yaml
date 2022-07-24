@@ -1,7 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: write-table-postgrse
+  name:
+
 spec:
   template:
     spec:

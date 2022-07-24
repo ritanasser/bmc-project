@@ -81,7 +81,8 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        cd dockerfile-job2
+        IMAGE="job2:${BRANCH_NAME}_${BUILD_NUMBER}"
         docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
@@ -94,7 +95,8 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        cd dockerfile-job3
+        IMAGE="job3:${BRANCH_NAME}_${BUILD_NUMBER}"
         docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
@@ -108,7 +110,8 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        cd dockerfile-job4
+        IMAGE="job4:${BRANCH_NAME}_${BUILD_NUMBER}"
         docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
