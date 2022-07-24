@@ -135,8 +135,8 @@ pipeline {
         helm repo update
         helm show values fluent/fluentd
         kubectl get pods
-        kubectl delete pod create-table-postgrse
-        helm del create-table-postgrse
+        kubectl delete pod create-table-postgrse-7jhdr
+        helm del create-table-postgrse-7jhdr
 
 
         '''
