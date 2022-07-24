@@ -135,8 +135,8 @@ pipeline {
         helm repo update
         helm show values fluent/fluentd
         kubectl get pods
-        kubectl delete pod minikube
-        helm del fluent
+        kubectl delete pod write-table-postgrse
+        helm del write-table-postgrse
 
 
         '''
