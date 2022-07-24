@@ -137,7 +137,7 @@ pipeline {
         ls phoenixnap
         #helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
         helm list --all-namespaces
-        helm uninstall phoenixnap
+        helm uninstall phoenix-chart
 
 
         '''
