@@ -88,7 +88,7 @@ pipeline {
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
-        cd ..
+        cd ../
         cd Jobs
         kubectl apply -f Jobs/job2.yaml
 
