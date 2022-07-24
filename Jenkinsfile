@@ -129,11 +129,14 @@ pipeline {
             when { anyOf { branch "master"; branch "dev" }}
         steps{
         sh'''
-        IMAGE="bmc-docker:${BRANCH_NAME}_${BUILD_NUMBER}"
+        cd dockerfile-job5
+        IMAGE=" job5:${BRANCH_NAME}_${BUILD_NUMBER}"
         docker login -u AWS https://723653791098.dkr.ecr.us-east-1.amazonaws.com -p $(aws ecr get-login-password --region us-east-1)
         docker build -t ${IMAGE} .
         docker tag ${IMAGE} ${DockerURL}/${IMAGE}
         docker push ${DockerURL}/${IMAGE}
+        cd ../
+        kubectl apply -f Jobs/job5.yaml
         wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
         tar xvf helm-v3.4.1-linux-amd64.tar.gz
         helm version
@@ -141,7 +144,6 @@ pipeline {
         #kubectl delete pod create-table-postgrse-8q5d5
         helm create phoenixnap
         ls phoenixnap
-
         helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
         helm list --all-namespaces
         helm uninstall phoenix-chart
