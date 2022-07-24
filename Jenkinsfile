@@ -131,16 +131,14 @@ pipeline {
         wget https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
         tar xvf helm-v3.4.1-linux-amd64.tar.gz
         helm version
-        helm repo add fluent https://fluent.github.io/helm-charts
-        helm repo update
-        helm show values fluent/fluentd
         kubectl get pods
         #kubectl delete pod create-table-postgrse-7jhdr
         helm create phoenixnap
         ls phoenixnap
+        helm status phoenixnap
         helm install phoenix-chart phoenixnap/ --values phoenixnap/values.yaml
         helm list --all-namespaces
-        #helm uninstall phoenixnap
+        helm uninstall phoenixnap
 
 
         '''
