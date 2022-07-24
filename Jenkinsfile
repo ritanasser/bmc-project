@@ -137,8 +137,9 @@ pipeline {
         kubectl get pods
         #kubectl delete pod create-table-postgrse-7jhdr
         helm create phoenixnap
+        ls phoenixnap
         helm list --all-namespaces
-        helm uninstall phoenixnap
+        #helm uninstall phoenixnap
 
 
         '''
