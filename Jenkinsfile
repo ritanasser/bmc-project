@@ -46,6 +46,7 @@ pipeline {
                 '''
 
             }
+
         }
             stage('docker'){
             when { anyOf { branch "master"; branch "dev" }}
